@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mediaquery2</title>
+    <style>
+        body{background: #ccc; font-size: 30px; font-weight: bold;}
+
+        /* 화면 최대 너비가 500px인 경우(화면너비:500px 이하) */
+        @media (max-width:500px){
+            body{background: #fcc;}
+        }
+
+        /* 화면너비 500px 이하 */
+        @media (min-width:1200px){
+            body{background: #ffc;}
+        }
+
+        /* 화면너비 700px~1000px 사이 */
+        @media (min-width:700px) and (max-width: 1000px){
+            body{background: #cfc;}
+        }
+
+        /* 화면너비 최대가 600이하거나 1100이상 */
+        @media (max-width: 600px), (min-width:1100px) {
+            body{color:#00f;}
+        }
+
+        
+    </style>
+</head>
+<body>
+    <p>미디어(device) 타입이 아닌 미디어의 특성에 따라 스타일 적용</p>
+</body>
+</html>

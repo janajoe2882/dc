@@ -1,0 +1,225 @@
+@charset "utf-8";
+
+
+/*variables*/
+$img : url("../images/img-logo.png") no-repeat;
+$main1 : #e26d5d;
+$main2 : #5d9fca;
+
+
+
+/*base*/
+body{background:url("../images/bg.jpg") no-repeat #182d40;
+    background-size: 100% auto;}
+a{display: inline-block; text-decoration: none; color:inherit;} //inherit 부모 요소와 같다
+.img{background:$img; text-indent: -9999px}
+.font{font-family: 'Just Another Hand', cursive; text-transform: uppercase;}
+.arrow::after{content:''; display:inline-block; width:10px; height:17px; 
+    background:$img 0 -727px; margin-left: 10px;}
+
+/*header*/
+header{
+    z-index:100;
+    position: fixed; width: 100%; height: 130px; bottom: 0; left: 0; 
+    background:#fff; box-shadow: 0 -1px rgba(0, 0, 0, .1); //border-top이 아니라 그림자로 넣은 이유는 사진이 밝을경우 경계필요, 어두운 경우 투명하게 비치게끔
+    .title{position: absolute; top:35px; left:204px; width: 173px; height: 60px;;
+        background-position: 0 -453px;}
+    .emblem{width:176px; height: 196px; position: absolute; top:-70px; left:15px;}
+    .menu_btn{display: none;
+        position: absolute; top:0; right: 0; z-index: 1;
+        background: #67a6ce; width: 50px; height: 46px; border-left: 1px solid #3b87b7; box-shadow: inset 1px 0 #95afd3;
+        transition: all .3s;
+        &.hover{background:#79afd3;}
+        &::after{content: ''; display: block;  width: 26px; height:3px; margin: 16px 0 0 12px; border-top: 9px double #fff;
+        border-bottom: 3px solid #fff;}
+
+    }
+} //end:header
+
+/*.sns*/
+.sns{
+    float: right; padding: 28px 11px 11px; border-left: 1px solid #ccc;
+    li{display: inline-block;}
+    a{width: 24px; height: 24px;}
+    .fb{background-position: 0 -609px;}
+    .fb:hover{background-position: 0 -633px;}
+    .tw{background-position: 0 -561px;}
+    .tw:hover{background-position: 0 -585px;}
+    .rss{background-position: 0 -513px;}
+    .rss:hover{background-position: 0 -537px;}
+} //end:.sns
+
+/*#gnb*/
+#gnb{
+    float:right; font-size:22px; line-height: 40px;
+    li{float:left; padding: 22px 11px 0; border-left: 1px solid #ddd;}
+    a{color:#5e5e5e; transition: all .2s ease-in-out; border-bottom: 2px solid #fff;}
+    a:hover{color:$main1; border-bottom: 2px solid $main1;}
+    a::before{color:$main1;}
+    .sub{
+        position:absolute; bottom:130px; margin-left:-11px;
+        opacity: 0; visibility: hidden; transition: all .2s ease-in-out; 
+        li{float:none; border:0; margin-bottom: 1px; background:#fff; padding:7px 14px 3px;}
+        li:first-child{border-radius:3px 3px 0 0;}
+        a{border:0;}
+    }
+    li:hover .sub{opacity:1; bottom:130px; visibility: visible;}
+} //end:#gnb
+
+/*.counter*/
+.counter{
+    ul{counter-reset:menu;} //새로운 카운터(이름menu)를 생성
+    li{counter-increment: menu;} //li가 있을때마다 하나씩 증가
+    li a::before{content:'0'counter(menu)' ';} //표시는 before/after 사용
+    li li a::before{content:counters(menu, '.')' ';} //menu 안에 또 다른 menu 카운터가 생김
+} //end:.counter
+
+/*#lang*/
+#language{
+    position: absolute; right: 0; bottom: 0; background:$main1;
+    font:14px/46px "Arial"; font-weight: bold; text-transform: uppercase;
+    padding:0 20px; border-radius: 2px 0 0; color: #eea79e;
+    li{display: inline;}
+    li::after{content: ' / '; padding:0 2px;}
+    li:last-child::after{display: none;}
+    a{color:#fff;  transition: all .2s ease-in-out; padding-bottom: 2px;
+        display: inline; border-bottom:1px solid transparent;}
+
+    a:hover{border-color: #fff;}
+
+}//end:#language
+
+/*#main_view*/
+#main_view{
+    position: relative;
+    .slider{
+        article{width: 100%; height: 100vh;
+        background: no-repeat; background-size: cover; } //높이를 100%으로 주면 지금 높이가 안잡힌 상태라 납작. 너비를 100vw로 주지 않은 이유는, 스크롤바까지 화면의 너비가 되므로, 가려지는 부분이 생김
+        .view1{background-image:url("../images/slide-1.jpg");}
+        .view2{background-image:url("../images/slide-2.jpg");}
+        .view3{background-image:url("../images/slide-3.jpg");}
+        h3,a{position: absolute; right: 0; color: #fff; transform: translateX(100%);
+            transition: all .3s ease-in-out;}
+        h3{font-size: 60px; background: rgba(0,0,0,.7);
+            padding: 12px 10px 4px; bottom: 200px;}
+        a{font-size: 26px; background: $main1; padding: 8px 6px 4px; bottom: 150px;}
+        [aria-hidden="false"]{
+            h3{transform: translateX(0); transition-delay: .3s;}
+            a{transform: translateX(0); transition-delay: .5s;}
+        }
+        
+                
+    } //end:.slider
+    .bx-pager{
+        position: absolute; z-index:60; top:70px; right: 20px;
+        div{float:left; margin-left:4px;}
+        a{width: 16px; height: 16px; background:rgba(0,0,0,.7); border-radius:50% ;
+            text-indent:-9999px; box-shadow:0 1px 1px rgba(255,255,255,.4), //아래 외부로 그림자
+                                            0 1px 1px rgba(0,0,0,.5) inset; //inset은 위 내부로 그림자
+            position: relative;}
+        a.active:before{content: ''; position: absolute; width: 10px; height: 10px;
+            top: 3px; left: 3px; border-radius: 50%; background: $main1;}
+    } //end:.bx-pager
+    .bx-controls-direction{display: none;
+        position: absolute; top: 20px; left: 6%; z-index: 60; 
+        a{margin-right:1px; width: 40px; height: 39px; background: rgba(0,0,0,.7);
+        margin-right: 2px; transition: all .3s;}
+        a:hover{background:$main1}
+        a::after{content: ''; display:block; width: 10px; height: 17px;
+        margin:11px 0 0 15px; background:$img;}
+        .bx-next::after{background-position:0 -727px;}
+        .bx-prev::after{background-position:0 -745px;}
+    } //end: .bx-controls-direction
+}//end:#main_view
+
+
+#notice{
+    position: fixed; top:0; left:0; z-index:70; background:#fff; width: 100%;
+    box-shadow:0 1px rgba(0,0,0,.1); height: 46px; overflow: hidden; 
+    h3{float:left; background: $main2; height: 46px; line-height: 46px; padding:0 11px;
+        font-size: 22px; color: #fff;}
+    ul{width: 150%;} //*화면 가로 너비가 적어져도 잘리는 li 메뉴가 사라지지 않고 보임 
+    li{float: left; border-right: 1px solid #ccc; padding: 0 14px;
+        a{line-height: 20px; padding:13px 0; line-height: 20px;
+        font-family: 'Helvetica','Arial'; font-size: 14px;
+        transition: all .2s;}
+        a:hover{color:$main2; }
+        span{color:#bbb; padding-left: 5px;}
+        }
+    .gradient_box{width: 200px; height: 46px; position: absolute; top:0; right: 0;
+        background: linear-gradient(90deg, transparent, white);}
+}//end:#notice
+
+#main_menu{
+    display: none;
+    a{display: block; background: $main1; font-size: 22px; color: #fff;
+        padding: 16px 6% 12px; border-top:1px solid #ea9488; border-bottom: 1px solid #da4632;
+        transition: all .3s;}
+    a:hover{background:#e47566;}
+    .sub a{padding-left: 12%;}
+    a::after{float:right;}
+}//end:#main_menu
+
+
+footer{
+    display: none;
+    font-family: 'Helvetica', 'Arial'; text-align: center; line-height:2em; font-size: 3vw; //글자크기가 화면 너비의 3%
+    text-shadow: 0 -1px rgba(0, 0, 0, .3); background:url(../images/pattern3.png) #182d40;
+    padding: 22px 6%; color: #fff;
+    .sns{position:static; float: none; padding:0;}
+    p{margin-top:20px;}
+} //end:footer
+
+/*screen less than 1200px*/
+@media (max-width:1200px){
+    .sns{position:absolute; bottom: 0; right:200px; border:0;}
+}
+
+@media (max-width:1024px){
+    header {
+        .title{left:25px;}
+        .emblem{display: none;}
+
+    }
+}
+
+@media (max-width:768px){
+    header{
+        position: relative; height: 120px; padding-top:46px; box-shadow: 0 1px rgba(0,0,0,.1);
+        .title{width: 147px; height: 50px; background-position:0 -657px;
+        top:81px; left:6%;}
+        .emblem{display: inline-block; width: 132px; height: 145px; background-position: 0 -196px; top:35px; left:auto; right: 6%;
+        z-index: 1;}
+        .menu_btn{display: block;}
+    }
+
+    #gnb,
+    header .sns{display: none;}
+
+    #language{top: 0; bottom: auto; width: 94%; padding: 0 0 0 6%; background:$main2 ; border-radius: 0; color:#95c1d6;}
+
+    #main_view{
+        .slider{
+            article{height: 350px;}
+            .view1{background-image:url("../images/slide-1-640x360.jpg");}
+            .view2{background-image:url("../images/slide-2-640x360.jpg");}
+            .view3{background-image:url("../images/slide-3-640x360.jpg");}
+            h3{font-size: 32px; bottom: 60px;}
+            a{bottom: 15px;}
+        }
+        .bx-pager{display: none;}
+        .bx-controls-direction{display: block;}
+    }
+    #notice{
+        position: relative; height: auto;
+        h3{transform: rotate(-90deg) translateX(-100%); width: 100%; 
+        transform-origin: left top; text-align: right;}
+        h3::after{display: none;}
+        ul{width: 100%; float: left; margin-top: -46px;}
+        li{float: none; margin-left:46px; border:0;
+        border-top: 1px solid #ccc; }
+        .gradient-box{display: none;}
+    }
+    #main_menu{display: block;}
+    footer{display: block;}
+}

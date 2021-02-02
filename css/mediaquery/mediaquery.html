@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mediaquery</title>
+    <link rel="stylesheet" href="style1.css" media="tv">
+    <style>
+        /*외부 css문서 연결*/
+        @import "reset.css";
+        @import "style.css" speech; /*음성출력장치*/
+
+        body{background:#ffc;}
+        h1{color:#00f;}
+
+        /*프린트(인쇄미리보기 확인가능)에서 적용*/
+        @media print{
+            
+            body{background:#ccf;}
+            h1{color:#f00;}
+
+        }
+
+    </style>
+</head>
+<body>
+    <h1>mediaQuery</h1>
+    <p>출력되는 미디어(device) 타입에 따라 적용되는 스타일을 다르게 함</p>
+</body>
+</html>
