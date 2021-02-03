@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex (378p)</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        #this{width: 90%; height: 300px; margin:0 auto; border: 10px solid #000;
+            display: flex ; flex-direction: row; justify-content: center;
+            align-items:center;}
+        #this div{width: 300xp; 
+            flex-grow:0;
+            flex-shrink: 1; 
+            flex-basis:100px;}
+        #this .item1{background: #fcc; font:12px/1 "Arial"; flex:1 1 auto; align-self: stretch; order:4;}
+        #this .item2{background: #cfc; font:24px/2 "Arial"; flex:0 0 200px; align-self:flex-start; order:3;}
+        #this .item3{background: #ccf; font:30px/1 "Arial"; flex:1 0 auto; align-self: flex-end;}
+        #this .item4{background: #ffc; font:40px/3 "Arial"; flex:0 1 auto;}
+
+        #next{display: inline-block; width: 50px; height: 50px;
+            background: #f00;}
+    </style>
+</head>
+<body>
+    <section id="this">
+        <div class="item1">item1</div>
+        <div class="item2">item2</div>
+        <div class="item3">item3</div>
+        <div class="item4">item4</div>
+    </section>
+    <section id="next">
+
+    </section>
+</body>
+</html>
